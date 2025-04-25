@@ -2,10 +2,11 @@ import { useFetchProducts } from '@/modules/products/queries/useFetchProducts';
 import { Product } from '@/modules/products/types/product';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { useFetchProductByCategory } from '../queries/useFetchProductsByCategory';
 
 export function useProducts() {
   const router = useRouter();
-  const { data, ...rest } = useFetchProducts();
+  const { data: allProducts, ...rest } = useFetchProducts();
   const [sortOption, setSortOption] = useState<{
     field: 'price' | 'rating';
     order: 'asc' | 'desc';
@@ -14,6 +15,9 @@ export function useProducts() {
     order: 'asc',
   });
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const { data: categoryProducts } = useFetchProductByCategory(
+    selectedCategory ?? '',
+  );
 
   function handleProductPress(productId: number) {
     router.push(`/product/${productId}`);
@@ -39,8 +43,12 @@ export function useProducts() {
     });
   }
 
-  const sortedProducts = data ? sortProducts(data.products) : [];
+  const products = allProducts ? sortProducts(allProducts.products) : [];
+  const categories = categoryProducts
+    ? sortProducts(categoryProducts.products)
+    : [];
 
+  const sortedProducts = selectedCategory ? categories : products;
   return {
     selectedCategory,
     handleProductPress,

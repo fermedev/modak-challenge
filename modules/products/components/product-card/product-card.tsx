@@ -1,7 +1,8 @@
 import { colors } from '@/common/theme/colors';
 import type { Product } from '@/modules/products/types/product';
+import { Image } from 'expo-image';
 import { Star } from 'lucide-react-native';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './product-card.styles';
 
 type ProductCardProps = {
@@ -19,7 +20,8 @@ export function ProductCard({ product, onPress }: ProductCardProps) {
       <Image
         source={{ uri: product.thumbnail }}
         style={styles.image}
-        resizeMode='cover'
+        contentFit='cover'
+        cachePolicy='memory-disk'
       />
       <View style={styles.content}>
         <Text style={styles.title} numberOfLines={2}>

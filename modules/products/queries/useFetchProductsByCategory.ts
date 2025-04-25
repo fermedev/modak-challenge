@@ -7,5 +7,6 @@ export function useFetchProductByCategory(cat: Category['slug']) {
   return useQuery({
     queryKey: PRODUCT_KEYS.productsByCategory(cat),
     queryFn: () => ProductsService.fetchProductsByCategories(cat),
+    enabled: !!cat,
   });
 }

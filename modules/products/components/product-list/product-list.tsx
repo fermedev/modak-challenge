@@ -2,8 +2,9 @@ import AppErrorView from '@/common/components/app-error/app-error';
 import { AppLoadingView } from '@/common/components/app-loading/app-loading';
 import { colors } from '@/common/theme/colors';
 import { ProductCard } from '@/modules/products/components/product-card/product-card';
+import { ProductFilter } from '@/modules/products/components/product-filter/product-filter';
 import { useProducts } from '@/modules/products/hooks/useProducts';
-import { FlatList, RefreshControl, Text } from 'react-native';
+import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { styles } from './product-list.styles';
 
 export function ProductList() {
@@ -14,6 +15,8 @@ export function ProductList() {
     refetch,
     sortedProducts,
     handleProductPress,
+    handleCategoryChange,
+    selectedCategory,
   } = useProducts();
 
   if (isPending) {
@@ -31,6 +34,10 @@ export function ProductList() {
 
   return (
     <>
+      <ProductFilter
+        onCategoryChange={handleCategoryChange}
+        selectedCategory={selectedCategory}
+      />
       <FlatList
         data={sortedProducts}
         keyExtractor={(item) => item.id.toString()}
@@ -52,9 +59,7 @@ export function ProductList() {
             tintColor={colors.primary}
           />
         }
-        ListEmptyComponent={() => (
-          <Text style={styles.emptyText}>No products found</Text>
-        )}
+        ListEmptyComponent={() => <ActivityIndicator />}
       />
     </>
   );
