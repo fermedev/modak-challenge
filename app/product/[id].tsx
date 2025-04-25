@@ -1,15 +1,20 @@
 import AppErrorView from '@/common/components/app-error/app-error';
 import { AppLayout } from '@/common/components/app-layout/app-layout';
 import { AppLoadingView } from '@/common/components/app-loading/app-loading';
+import { ProductDetail } from '@/modules/products/components/product-detail/product-detail';
 import { useFetchProductById } from '@/modules/products/queries/useFetchProductById';
 import { Stack, useLocalSearchParams } from 'expo-router';
 
-export default function ProductDetail() {
+export default function ProductById() {
   const params = useLocalSearchParams<{ id: string }>();
 
-  const { data, isPending, isError, error, refetch } = useFetchProductById(
-    Number(params.id),
-  );
+  const {
+    data: product,
+    isPending,
+    isError,
+    error,
+    refetch,
+  } = useFetchProductById(Number(params.id));
 
   if (isPending) {
     return <AppLoadingView />;
@@ -26,7 +31,8 @@ export default function ProductDetail() {
 
   return (
     <AppLayout>
-      <Stack.Screen options={{ title: data.title }} />
+      <Stack.Screen options={{ title: product.title }} />
+      <ProductDetail product={product} />
     </AppLayout>
   );
 }

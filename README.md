@@ -45,5 +45,11 @@ To succesfully compile it's necessary to strictly follow the Rules of React and 
 You can check compiled optimizations by using the following command.
 
 ```bash
-npx react-compiler-healthcheck@latest
+bunx react-compiler-healthcheck@latest
+```
+
+This project also uses Expo router that gives you deeplinking automatically enabled for all screens.
+
+```bash
+bunx uri-scheme open modak-products://product/16 --ios
 ```

@@ -2,8 +2,8 @@ import { API } from '@/api/config/axios';
 
 import type {
   Category,
-  Product,
   ProductsResponse,
+  SingleProductReponse,
 } from '@/modules/products/types/product';
 
 export class ProductsService {
@@ -13,7 +13,7 @@ export class ProductsService {
   }
 
   static async fetchProductsById(id: number) {
-    const response = await API.get<Product>(`/products/${id}`);
+    const response = await API.get<SingleProductReponse>(`/products/${id}`);
     return response.data;
   }
   static async fetchCategories() {
