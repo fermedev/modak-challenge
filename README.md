@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
 ## Get started
 
-1. Install dependencies
+## Installation
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+This project use bun, to install bun run this command in your terminal:
 
 ```bash
-npm run reset-project
+  curl -fsSL https://bun.sh/install | bash
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Install dependencies with the following command in the root of this project.
 
-## Learn more
+```bash
+  bun install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+#### If not, remove bun.lockb and install dependencies with the package manager of you preference.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+  npm install
+```
 
-## Join the community
+## Generate development build
 
-Join our community of developers creating universal apps.
+This proyect use CNG strategy from expo, you will need to generate native modules build by using the following command.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+  bunx expo prebuild
+```
+
+## Configuration
+
+#### You will need to setup a new .env.local file, you have an example in the root. Just copy it and rename it to .env.local
+
+## Run your develoment
+
+```bash
+   bun run ios | android
+```
+
+## Acknowledge
+
+This project uses react-compiler, so you don't need to optimize using memo, useMemo, useCallback.
+To succesfully compile it's necessary to strictly follow the Rules of React and Hooks.
+You can check compiled optimizations by using the following command.
+
+```bash
+npx react-compiler-healthcheck@latest
+```
