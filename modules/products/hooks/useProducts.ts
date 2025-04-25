@@ -43,17 +43,18 @@ export function useProducts() {
     });
   }
 
-  const products = allProducts ? sortProducts(allProducts.products) : [];
-  const categories = categoryProducts
+  const all = allProducts ? sortProducts(allProducts.products) : [];
+  const byCategory = categoryProducts
     ? sortProducts(categoryProducts.products)
     : [];
 
-  const sortedProducts = selectedCategory ? categories : products;
+  const sortedProducts = selectedCategory ? byCategory : all;
   return {
     selectedCategory,
     handleProductPress,
     handleCategoryChange,
     handleSortChange,
+    sortOption,
     sortedProducts,
     ...rest,
   };

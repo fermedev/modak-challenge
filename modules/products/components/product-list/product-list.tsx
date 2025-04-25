@@ -5,6 +5,7 @@ import { ProductCard } from '@/modules/products/components/product-card/product-
 import { ProductFilter } from '@/modules/products/components/product-filter/product-filter';
 import { useProducts } from '@/modules/products/hooks/useProducts';
 import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { ProductSort } from '../product-sort/product-sort';
 import { styles } from './product-list.styles';
 
 export function ProductList() {
@@ -17,6 +18,8 @@ export function ProductList() {
     handleProductPress,
     handleCategoryChange,
     selectedCategory,
+    handleSortChange,
+    sortOption,
   } = useProducts();
 
   if (isPending) {
@@ -38,6 +41,7 @@ export function ProductList() {
         onCategoryChange={handleCategoryChange}
         selectedCategory={selectedCategory}
       />
+      <ProductSort sortOption={sortOption} onSortChange={handleSortChange} />
       <FlatList
         data={sortedProducts}
         keyExtractor={(item) => item.id.toString()}
