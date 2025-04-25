@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { colors } from '@/common/theme/colors';
-import { useFetchCategories } from '@/modules/products/queries/useFetchCategories';
+import { useFetchCategories } from '@/features/products/queries/useFetchCategories';
 import { styles } from './product-filter.styles';
 
 type ProductFilterProps = {

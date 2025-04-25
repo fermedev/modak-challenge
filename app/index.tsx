@@ -1,5 +1,5 @@
 import { AppLayout } from '@/common/components/app-layout/app-layout';
-import { ProductList } from '@/modules/products/components/product-list/product-list';
+import { ProductList } from '@/features/products/components/product-list/product-list';
 
 export default function Home() {
   return (

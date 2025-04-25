@@ -12,7 +12,6 @@ export type ProductsModel = Pick<
 export type ProductModel = Pick<
   SingleProductReponse,
   | 'id'
-  | 'images'
   | 'thumbnail'
   | 'brand'
   | 'title'

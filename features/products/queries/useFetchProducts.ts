@@ -1,4 +1,4 @@
-import { ProductsService } from '@/modules/products/services/products';
+import { ProductsService } from '@/features/products/services/products';
 import { useQuery } from '@tanstack/react-query';
 import { PRODUCT_KEYS } from './keys/products';
 

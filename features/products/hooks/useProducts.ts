@@ -1,4 +1,4 @@
-import { useFetchProducts } from '@/modules/products/queries/useFetchProducts';
+import { useFetchProducts } from '@/features/products/queries/useFetchProducts';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ProductsModel } from '../models/products';

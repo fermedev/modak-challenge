@@ -10,7 +10,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ferjmedinadev.modakchallenge"
+      "bundleIdentifier": "com.ferjmedinadev.modakchallenge",
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "This app needs calendar access to add purchase reminders."
+      }
     },
     "android": {
       "adaptiveIcon": {

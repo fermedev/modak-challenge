@@ -1,9 +1,12 @@
+import { PushNotificationService } from '@/common/services/push-notification-service';
 import { colors } from '@/common/theme/colors';
-import { SingleProductReponse } from '@/modules/products/types/product';
+import { ProductModel } from '@/features/products/models/products';
+import Reminder from '@/modules/expo-purchase-reminder';
 import { Image } from 'expo-image';
 import { Box, ShoppingCart, Star, Tag, Truck } from 'lucide-react-native';
 import { PropsWithChildren } from 'react';
 import {
+  Alert,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -13,7 +16,7 @@ import {
 import { styles } from './product-detail.styles';
 
 type ProductDetailProps = {
-  product: SingleProductReponse;
+  product: ProductModel;
 };
 
 export function ProductDetail({
@@ -21,19 +24,31 @@ export function ProductDetail({
 }: PropsWithChildren<ProductDetailProps>) {
   const dimensions = useWindowDimensions();
 
-  function handleAddToCart() {}
+  async function handleAddToCart() {
+    try {
+      await Reminder.addReminder(
+        'This a reminder for your purchase',
+        'Buenos Aires',
+        'Note example',
+        Math.floor(Date.now() / 1000) + 3600,
+      );
+      await PushNotificationService.schedulePushNotification();
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert(error.message);
+      }
+    }
+  }
   return (
     <>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Main Image */}
         <Image
-          source={{ uri: product.images[0] ?? product.thumbnail }}
+          source={{ uri: product.thumbnail }}
           style={[styles.mainImage, { height: dimensions.width * 0.8 }]}
           contentFit='cover'
           cachePolicy='memory-disk'
         />
 
-        {/* Product Info */}
         <View style={styles.infoContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.brand}>{product.brand}</Text>

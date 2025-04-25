@@ -1,5 +1,5 @@
 import { colors } from '@/common/theme/colors';
-import type { ProductsModel } from '@/modules/products/models/products';
+import type { ProductsModel } from '@/features/products/models/products';
 import { Image } from 'expo-image';
 import { Star } from 'lucide-react-native';
 import { Text, TouchableOpacity, View } from 'react-native';

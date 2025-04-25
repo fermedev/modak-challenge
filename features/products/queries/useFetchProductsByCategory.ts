@@ -1,4 +1,4 @@
-import type { Category } from '@/modules/products/types/product';
+import type { Category } from '@/features/products/types/product';
 import { useQuery } from '@tanstack/react-query';
 import { ProductsService } from '../services/products';
 import { PRODUCT_KEYS } from './keys/products';

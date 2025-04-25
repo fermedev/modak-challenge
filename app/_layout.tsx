@@ -1,7 +1,12 @@
 import { QueryProvider } from '@/api/config/react-query';
+import { useRegisterPushNotification } from '@/common/hooks/useRegisterPushNotifications';
+import { PushNotificationService } from '@/common/services/push-notification-service';
 import { Stack } from 'expo-router';
 
+PushNotificationService.notificationHandler();
+
 export default function RootLayout() {
+  useRegisterPushNotification();
   return (
     <QueryProvider>
       <Stack>

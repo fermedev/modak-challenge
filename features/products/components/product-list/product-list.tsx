@@ -1,9 +1,9 @@
 import AppErrorView from '@/common/components/app-error/app-error';
 import { AppLoadingView } from '@/common/components/app-loading/app-loading';
 import { colors } from '@/common/theme/colors';
-import { ProductCard } from '@/modules/products/components/product-card/product-card';
-import { ProductFilter } from '@/modules/products/components/product-filter/product-filter';
-import { useProducts } from '@/modules/products/hooks/useProducts';
+import { ProductCard } from '@/features/products/components/product-card/product-card';
+import { ProductFilter } from '@/features/products/components/product-filter/product-filter';
+import { useProducts } from '@/features/products/hooks/useProducts';
 import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { ProductSort } from '../product-sort/product-sort';
 import { styles } from './product-list.styles';

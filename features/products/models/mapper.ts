@@ -26,7 +26,6 @@ export class ProductsMapper {
       category: product.category,
       description: product.description,
       discountPercentage: product.discountPercentage,
-      images: product.images,
       price: product.price,
       rating: product.rating,
       stock: product.stock,

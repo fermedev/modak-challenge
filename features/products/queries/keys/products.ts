@@ -1,4 +1,4 @@
-import { Category } from '@/modules/products/types/product';
+import { Category } from '@/features/products/types/product';
 
 export const PRODUCT_KEYS = {
   all: ['products'],

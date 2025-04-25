@@ -1,11 +1,11 @@
 import { API } from '@/api/config/axios';
 
-import { ProductsMapper } from '@/modules/products/models/mapper';
+import { ProductsMapper } from '@/features/products/models/mapper';
 import type {
   Category,
   ProductsResponse,
   SingleProductReponse,
-} from '@/modules/products/types/product';
+} from '@/features/products/types/product';
 
 export class ProductsService {
   static async fetchProducts() {
