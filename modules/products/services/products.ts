@@ -1,5 +1,6 @@
 import { API } from '@/api/config/axios';
 
+import { ProductsMapper } from '@/modules/products/models/mapper';
 import type {
   Category,
   ProductsResponse,
@@ -9,22 +10,22 @@ import type {
 export class ProductsService {
   static async fetchProducts() {
     const response = await API.get<ProductsResponse>('/products');
-    return response.data;
+    return ProductsMapper.mapProductsToModel(response.data.products);
   }
 
   static async fetchProductsById(id: number) {
     const response = await API.get<SingleProductReponse>(`/products/${id}`);
-    return response.data;
+    return ProductsMapper.mapProductToModel(response.data);
   }
   static async fetchCategories() {
     const response = await API.get<Category[]>('/products/categories');
-    return response.data;
+    return ProductsMapper.mapCategoryToModel(response.data);
   }
 
   static async fetchProductsByCategories(cat: Category['slug']) {
     const response = await API.get<ProductsResponse>(
       `/products/category/${cat}`,
     );
-    return response.data;
+    return ProductsMapper.mapProductsToModel(response.data.products);
   }
 }

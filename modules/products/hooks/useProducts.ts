@@ -1,7 +1,7 @@
 import { useFetchProducts } from '@/modules/products/queries/useFetchProducts';
-import { Product } from '@/modules/products/types/product';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { ProductsModel } from '../models/products';
 import { useFetchProductByCategory } from '../queries/useFetchProductsByCategory';
 
 export function useProducts() {
@@ -31,7 +31,7 @@ export function useProducts() {
     setSortOption({ field, order });
   }
 
-  function sortProducts(products: Product[]) {
+  function sortProducts(products: ProductsModel[]) {
     if (!products) return [];
 
     return [...products].sort((a, b) => {
@@ -43,10 +43,8 @@ export function useProducts() {
     });
   }
 
-  const all = allProducts ? sortProducts(allProducts.products) : [];
-  const byCategory = categoryProducts
-    ? sortProducts(categoryProducts.products)
-    : [];
+  const all = allProducts ? sortProducts(allProducts) : [];
+  const byCategory = categoryProducts ? sortProducts(categoryProducts) : [];
 
   const sortedProducts = selectedCategory ? byCategory : all;
   return {

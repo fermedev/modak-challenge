@@ -1,12 +1,12 @@
 import { colors } from '@/common/theme/colors';
-import type { Product } from '@/modules/products/types/product';
+import type { ProductsModel } from '@/modules/products/models/products';
 import { Image } from 'expo-image';
 import { Star } from 'lucide-react-native';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './product-card.styles';
 
 type ProductCardProps = {
-  product: Product;
+  product: ProductsModel;
   onPress: () => void;
 };
 
