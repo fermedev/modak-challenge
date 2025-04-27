@@ -48,8 +48,14 @@ You can check compiled optimizations by using the following command.
 bunx react-compiler-healthcheck@latest
 ```
 
-This project also uses Expo router that gives you deeplinking automatically enabled for all screens.
+This project also uses Expo Router that gives you deeplinking automatically enabled for all screens.
 
 ```bash
 bunx uri-scheme open modak-products://product/16 --ios
+```
+
+This project uses Expo Modules for native modules development, the module is in the root folder. Made for iOS only.
+
+```bash
+~/modules/expo-purchase-reminder/ios/ExpoPurchaseReminderModule.swift
 ```
