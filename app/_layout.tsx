@@ -5,6 +5,10 @@ import { Stack } from 'expo-router';
 
 PushNotificationService.notificationHandler();
 
+export const unstable_settings = {
+  initialRouteName: 'index',
+};
+
 export default function RootLayout() {
   useRegisterPushNotification();
   return (
